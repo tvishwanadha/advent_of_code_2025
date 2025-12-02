@@ -1,0 +1,45 @@
+[project]
+name = "aoc_2025"
+version = "2025.12"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "pytest",
+    "pyright",
+]
+
+[tool.ruff]
+target-version = "py312"
+ 
+[tool.ruff.lint]
+extend-select = [
+    "I",    # https://docs.astral.sh/ruff/rules/#isort-i
+    "B",    # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+    "Q",    # https://docs.astral.sh/ruff/rules/#flake8-quotes-q
+    "PT",   # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
+    "SIM",  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+    "A",    # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+    "EM",   # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
+    "N",    # https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    "UP",   # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "FAST", # https://docs.astral.sh/ruff/rules/#fastapi-fast
+    "ASYNC",# https://docs.astral.sh/ruff/rules/#flake8-async-async
+    "DTZ",  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+    "LOG",  # https://docs.astral.sh/ruff/rules/#flake8-logging-log
+    "TRY",  # https://docs.astral.sh/ruff/rules/#tryceratops-try
+]
+
+[tool.pytest.ini_options]
+testpaths = ["packages"]
+python_files = ["test_*.py"]
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
