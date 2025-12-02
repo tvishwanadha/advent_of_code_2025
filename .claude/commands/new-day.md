@@ -11,7 +11,19 @@ The user wants to create a new day package for day $ARGUMENTS.
    uv init --package packages/day_$ARGUMENTS --no-readme
    ```
 
-3. **Create solution.py**: Replace the generated `__init__.py` content and create `solution.py`:
+3. **Update pyproject.toml**: Update `packages/day_$ARGUMENTS/pyproject.toml` to set the version and add the scripts entry point:
+   ```toml
+   version = "2025.12"
+   ```
+   And add:
+   ```toml
+   [project.scripts]
+   day_$ARGUMENTS = "day_$ARGUMENTS.solution:main"
+   ```
+
+4. **Sync to update uv.lock**: Run `uv sync` to ensure the version is recorded in the lock file.
+
+5. **Create solution.py**: Replace the generated `__init__.py` content and create `solution.py`:
 
    `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/__init__.py` should be empty.
 
@@ -34,13 +46,17 @@ The user wants to create a new day package for day $ARGUMENTS.
        raise NotImplementedError(msg)
 
 
-   if __name__ == "__main__":
+   def main() -> None:
        input_file = Path(__file__).parent / "input.txt"
        print(f"Part 1: {solve_part1(input_file)}")
-       print(f"Part 2: {solve_part2(input_file)}")
+       # print(f"Part 2: {solve_part2(input_file)}")
+
+
+   if __name__ == "__main__":
+       main()
    ```
 
-4. **Create tests directory and test file**:
+6. **Create tests directory and test file**:
 
    `packages/day_$ARGUMENTS/tests/test_solution.py`:
    ```python
@@ -60,7 +76,7 @@ The user wants to create a new day package for day $ARGUMENTS.
        assert result == 0  # TODO: Add expected result
    ```
 
-5. **Create README.md**: Create `packages/day_$ARGUMENTS/README.md` with the puzzle text:
+7. **Create README.md**: Create `packages/day_$ARGUMENTS/README.md` with the puzzle text:
 
    ```markdown
    # Day $ARGUMENTS: <Title>
@@ -89,21 +105,21 @@ The user wants to create a new day package for day $ARGUMENTS.
    | 2    | -         | -        | -      | -     | Not yet attempted |
    ```
 
-6. **Update root pyproject.toml**: Add the new package to dependencies and sources:
+8. **Update root pyproject.toml**: Add the new package to dependencies and sources:
    - Add `"day_$ARGUMENTS"` to `[project] dependencies`
    - Add `day_$ARGUMENTS = { workspace = true }` to `[tool.uv.sources]`
 
-7. **Sync and verify**:
+9. **Sync and verify**:
    ```bash
    uv sync
    make ci DAY=day_$ARGUMENTS
    ```
 
-8. **Implement the solution**: Based on the puzzle description, implement `solve_part1()` in `solution.py` and update the test with the example from the puzzle.
+10. **Implement the solution**: Based on the puzzle description, implement `solve_part1()` in `solution.py` and update the test with the example from the puzzle.
 
-9. **Run CI again** to verify the implementation passes all checks.
+11. **Run CI again** to verify the implementation passes all checks.
 
-10. **Update Notes**: After implementation, update the Notes table in README.md with:
+12. **Update Notes**: After implementation, update the Notes table in README.md with:
     - Zero-shot: Yes if solved on first attempt without hints, No otherwise
     - Attempts: Number of attempts needed
     - Errors: Types of errors encountered (parsing, logic, edge cases, etc.)

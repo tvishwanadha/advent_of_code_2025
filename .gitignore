@@ -49,3 +49,7 @@ htmlcov/
 
 # AoC puzzle inputs (not shared per AoC request)
 **/input.txt
+
+# Claude Code
+.claude/settings.local.json
+.claude/plans/

@@ -24,7 +24,12 @@ The user wants to add Part 2 for day $ARGUMENTS.
 
 3. **Implement solve_part2**: Update `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py` to implement `solve_part2()`.
 
-4. **Add Part 2 test**: Add `test_part2_example()` to `packages/day_$ARGUMENTS/tests/test_solution.py`:
+4. **Enable Part 2 output**: In `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py`, uncomment the Part 2 print line in `main()`:
+   ```python
+   print(f"Part 2: {solve_part2(input_file)}")
+   ```
+
+5. **Add Part 2 test**: Add `test_part2_example()` to `packages/day_$ARGUMENTS/tests/test_solution.py`:
 
    ```python
    from day_$ARGUMENTS.solution import solve_part1, solve_part2
@@ -40,7 +45,7 @@ The user wants to add Part 2 for day $ARGUMENTS.
        assert result == <expected>
    ```
 
-5. **Run CI** to verify:
+6. **Run CI** to verify:
    ```bash
    make ci DAY=day_$ARGUMENTS
    ```

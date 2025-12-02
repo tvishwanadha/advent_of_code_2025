@@ -1,0 +1,11 @@
+[project]
+name = "day_01"
+version = "2025.12"
+requires-python = ">=3.12"
+
+[project.scripts]
+day_01 = "day_01.solution:main"
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
