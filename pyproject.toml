@@ -5,6 +5,7 @@ requires-python = ">=3.12"
 license = "MIT"
 dependencies = [
     "day_01",
+    "day_02",
 ]
 
 [tool.uv.workspace]
@@ -12,6 +13,7 @@ members = ["packages/*"]
 
 [tool.uv.sources]
 day_01 = { workspace = true }
+day_02 = { workspace = true }
 
 [dependency-groups]
 dev = [

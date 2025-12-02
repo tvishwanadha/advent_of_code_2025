@@ -6,6 +6,7 @@ requires-python = ">=3.12"
 members = [
     "aoc-2025",
     "day-01",
+    "day-02",
 ]
 
 [[package]]
@@ -14,6 +15,7 @@ version = "2025.12"
 source = { virtual = "." }
 dependencies = [
     { name = "day-01" },
+    { name = "day-02" },
 ]
 
 [package.dev-dependencies]
@@ -24,7 +26,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "day-01", editable = "packages/day_01" }]
+requires-dist = [
+    { name = "day-01", editable = "packages/day_01" },
+    { name = "day-02", editable = "packages/day_02" },
+]
 
 [package.metadata.requires-dev]
 dev = [
@@ -46,6 +51,11 @@ wheels = [
 name = "day-01"
 version = "2025.12"
 source = { editable = "packages/day_01" }
+
+[[package]]
+name = "day-02"
+version = "2025.12"
+source = { editable = "packages/day_02" }
 
 [[package]]
 name = "iniconfig"

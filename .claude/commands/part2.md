@@ -49,3 +49,14 @@ The user wants to add Part 2 for day $ARGUMENTS.
    ```bash
    make ci DAY=day_$ARGUMENTS
    ```
+
+7. **Run solution and present answer**: Run the solution with `uv run day_$ARGUMENTS` and present the Part 2 answer to the user.
+
+8. **Wait for user validation**: Ask the user to confirm whether the answer was correct on the Advent of Code server. Do NOT update the Notes table until the user confirms the result.
+
+9. **Update Notes**: After the user confirms, update the Part 2 row in the Notes table in README.md with:
+   - Zero-shot: Yes if solved on first attempt without hints, No otherwise
+   - Attempts: Number of attempts needed
+   - Errors: Types of errors encountered (parsing, logic, edge cases, etc.)
+   - Hints: Any hints or guidance provided by the user
+   - Observations: Interesting notes about the solution process
