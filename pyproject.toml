@@ -6,6 +6,7 @@ license = "MIT"
 dependencies = [
     "day_01",
     "day_02",
+    "day_03",
 ]
 
 [tool.uv.workspace]
@@ -14,6 +15,7 @@ members = ["packages/*"]
 [tool.uv.sources]
 day_01 = { workspace = true }
 day_02 = { workspace = true }
+day_03 = { workspace = true }
 
 [dependency-groups]
 dev = [

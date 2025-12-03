@@ -1,12 +1,13 @@
 version = 1
 revision = 3
-requires-python = ">=3.12"
+requires-python = ">=3.14.0"
 
 [manifest]
 members = [
     "aoc-2025",
     "day-01",
     "day-02",
+    "day-03",
 ]
 
 [[package]]
@@ -16,6 +17,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "day-01" },
     { name = "day-02" },
+    { name = "day-03" },
 ]
 
 [package.dev-dependencies]
@@ -29,6 +31,7 @@ dev = [
 requires-dist = [
     { name = "day-01", editable = "packages/day_01" },
     { name = "day-02", editable = "packages/day_02" },
+    { name = "day-03", editable = "packages/day_03" },
 ]
 
 [package.metadata.requires-dev]
@@ -56,6 +59,11 @@ source = { editable = "packages/day_01" }
 name = "day-02"
 version = "2025.12"
 source = { editable = "packages/day_02" }
+
+[[package]]
+name = "day-03"
+version = "2025.12"
+source = { editable = "packages/day_03" }
 
 [[package]]
 name = "iniconfig"
