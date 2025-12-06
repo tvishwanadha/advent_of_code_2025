@@ -10,6 +10,7 @@ members = [
     "day-03",
     "day-04",
     "day-05",
+    "day-06",
 ]
 
 [[package]]
@@ -22,6 +23,7 @@ dependencies = [
     { name = "day-03" },
     { name = "day-04" },
     { name = "day-05" },
+    { name = "day-06" },
 ]
 
 [package.dev-dependencies]
@@ -38,6 +40,7 @@ requires-dist = [
     { name = "day-03", editable = "packages/day_03" },
     { name = "day-04", editable = "packages/day_04" },
     { name = "day-05", editable = "packages/day_05" },
+    { name = "day-06", editable = "packages/day_06" },
 ]
 
 [package.metadata.requires-dev]
@@ -80,6 +83,11 @@ source = { editable = "packages/day_04" }
 name = "day-05"
 version = "2025.12"
 source = { editable = "packages/day_05" }
+
+[[package]]
+name = "day-06"
+version = "2025.12"
+source = { editable = "packages/day_06" }
 
 [[package]]
 name = "iniconfig"
