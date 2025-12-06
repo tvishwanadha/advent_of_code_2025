@@ -1,11 +1,11 @@
 [project]
 name = "day-03"
 version = "2025.12"
-description = "Advent of Code 2025 - Day 03"
+description = "Advent of Code 2025 - Day 03: Lobby"
 authors = [
     { name = "Teja Vishwanadha", email = "496868+tvishwanadha@users.noreply.github.com" }
 ]
-requires-python = ">=3.14.0"
+requires-python = ">=3.12"
 dependencies = []
 
 [project.scripts]

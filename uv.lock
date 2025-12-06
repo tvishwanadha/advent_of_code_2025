@@ -1,6 +1,6 @@
 version = 1
 revision = 3
-requires-python = ">=3.14.0"
+requires-python = ">=3.12"
 
 [manifest]
 members = [
@@ -9,6 +9,7 @@ members = [
     "day-02",
     "day-03",
     "day-04",
+    "day-05",
 ]
 
 [[package]]
@@ -20,6 +21,7 @@ dependencies = [
     { name = "day-02" },
     { name = "day-03" },
     { name = "day-04" },
+    { name = "day-05" },
 ]
 
 [package.dev-dependencies]
@@ -35,6 +37,7 @@ requires-dist = [
     { name = "day-02", editable = "packages/day_02" },
     { name = "day-03", editable = "packages/day_03" },
     { name = "day-04", editable = "packages/day_04" },
+    { name = "day-05", editable = "packages/day_05" },
 ]
 
 [package.metadata.requires-dev]
@@ -72,6 +75,11 @@ source = { editable = "packages/day_03" }
 name = "day-04"
 version = "2025.12"
 source = { editable = "packages/day_04" }
+
+[[package]]
+name = "day-05"
+version = "2025.12"
+source = { editable = "packages/day_05" }
 
 [[package]]
 name = "iniconfig"

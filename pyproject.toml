@@ -8,6 +8,7 @@ dependencies = [
     "day_02",
     "day_03",
     "day_04",
+    "day_05",
 ]
 
 [tool.uv.workspace]
@@ -18,6 +19,7 @@ day_01 = { workspace = true }
 day_02 = { workspace = true }
 day_03 = { workspace = true }
 day_04 = { workspace = true }
+day_05 = { workspace = true }
 
 [dependency-groups]
 dev = [
@@ -50,6 +52,7 @@ extend-select = [
 [tool.pytest.ini_options]
 testpaths = ["packages"]
 python_files = ["test_*.py"]
+addopts = "--import-mode=importlib"
 
 [tool.pyright]
 pythonVersion = "3.12"

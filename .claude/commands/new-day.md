@@ -13,15 +13,13 @@ The user wants to create a new day package for day $ARGUMENTS.
    uv init --package packages/day_$ARGUMENTS --no-readme
    ```
 
-4. **Update pyproject.toml**: Update `packages/day_$ARGUMENTS/pyproject.toml` to set the version and add the scripts entry point:
-   ```toml
-   version = "2025.12"
-   ```
-   And add:
-   ```toml
-   [project.scripts]
-   day_$ARGUMENTS = "day_$ARGUMENTS.solution:main"
-   ```
+4. **Update pyproject.toml**: Update `packages/day_$ARGUMENTS/pyproject.toml` with the following changes:
+   - Change `version = "0.1.0"` to `version = "2025.12"`
+   - Change `description = "Add your description here"` to `description = "Advent of Code 2025 - Day $ARGUMENTS: <Title>"`
+   - Keep the `name` as-is (uv init generates the correct hyphenated name like `day-05`)
+   - Keep the `authors` block (already provided by uv init)
+   - Change `requires-python = ">=3.14.0"` to `requires-python = ">=3.12"`
+   - Change the scripts entry from `day-$ARGUMENTS = "day_$ARGUMENTS:main"` to `day_$ARGUMENTS = "day_$ARGUMENTS.solution:main"` (underscore for script name, add `.solution`)
 
 5. **Sync to update uv.lock**: Run `uv sync` to ensure the version is recorded in the lock file.
 
