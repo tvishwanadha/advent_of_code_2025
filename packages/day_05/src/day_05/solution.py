@@ -1,9 +1,5 @@
-from pathlib import Path
-
-
-def solve_part1(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        content = f.read().strip()
+def solve_part1(input_data: str) -> int:
+    content = input_data.strip()
 
     # Split into ranges section and ingredients section
     sections = content.split("\n\n")
@@ -30,9 +26,8 @@ def solve_part1(input_path: Path | str) -> int:
     return fresh_count
 
 
-def solve_part2(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        content = f.read().strip()
+def solve_part2(input_data: str) -> int:
+    content = input_data.strip()
 
     # Split into ranges section (ignore ingredients section for Part 2)
     sections = content.split("\n\n")
@@ -63,13 +58,3 @@ def solve_part2(input_path: Path | str) -> int:
         total += end - start + 1
 
     return total
-
-
-def main() -> None:
-    input_file = Path(__file__).parent / "input.txt"
-    print(f"Part 1: {solve_part1(input_file)}")
-    print(f"Part 2: {solve_part2(input_file)}")
-
-
-if __name__ == "__main__":
-    main()

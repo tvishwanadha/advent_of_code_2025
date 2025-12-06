@@ -34,6 +34,7 @@ dev = [
 target-version = "py312"
  
 [tool.ruff.lint]
+isort.known-first-party = ["day_*"]
 extend-select = [
     "I",    # https://docs.astral.sh/ruff/rules/#isort-i
     "B",    # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b

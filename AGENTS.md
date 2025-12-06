@@ -18,8 +18,8 @@ packages/day_XX/
 ├── README.md           # Puzzle description (Part 1 & Part 2 sections)
 ├── src/
 │   └── day_XX/
-│       ├── __init__.py
-│       ├── solution.py # Main solution (solve_part1, solve_part2)
+│       ├── __init__.py # Entry point with main()
+│       ├── solution.py # Solve functions (solve_part1, solve_part2)
 │       └── input.txt   # Puzzle input (same for both parts)
 └── tests/
     └── test_solution.py
@@ -32,11 +32,12 @@ packages/day_XX/
 1. Prompts for Part 1 puzzle text
 2. Runs `uv init --package packages/day_XX` to scaffold
 3. Creates `tests/` directory and test file
-4. Creates `solution.py` with part1/part2 template
-5. Creates `README.md` with Part 1 description
-6. Updates root `pyproject.toml` to include the new package
-7. Runs `uv sync` and `make ci` to verify
-8. Implements the Part 1 solution
+4. Replaces `__init__.py` with main() entry point
+5. Creates `solution.py` with solve_part1/solve_part2 templates
+6. Creates `README.md` with Part 1 description
+7. Updates root `pyproject.toml` to include the new package
+8. Runs `uv sync` and `make ci` to verify
+9. Implements the Part 1 solution
 
 ### `/part2 XX` - Add Part 2 to an existing day
 
@@ -46,48 +47,67 @@ packages/day_XX/
 4. Adds Part 2 test
 5. Runs `make ci` to verify
 
-## Solution Template
+## File Templates
 
-The `solution.py` file should follow this pattern:
+### `__init__.py` - Entry Point
+
+The `__init__.py` file handles file I/O and CLI entry:
 
 ```python
 from pathlib import Path
 
-
-def solve_part1(input_path: Path | str) -> int:
-    # Parse input and solve Part 1
-    ...
-    return result
+from day_XX.solution import solve_part1, solve_part2
 
 
-def solve_part2(input_path: Path | str) -> int:
-    # Parse input and solve Part 2
-    ...
-    return result
+def main() -> None:
+    input_file = Path(__file__).parent / "input.txt"
+    input_data = input_file.read_text()
+    print(f"Part 1: {solve_part1(input_data)}")
+    print(f"Part 2: {solve_part2(input_data)}")
 
 
 if __name__ == "__main__":
-    input_file = Path(__file__).parent / "input.txt"
-    print(f"Part 1: {solve_part1(input_file)}")
-    print(f"Part 2: {solve_part2(input_file)}")
+    main()
+```
+
+### `solution.py` - Solve Functions
+
+The `solution.py` file contains pure solve functions that accept string input:
+
+```python
+def solve_part1(input_data: str) -> int:
+    # Parse input_data and solve Part 1
+    ...
+    return result
+
+
+def solve_part2(input_data: str) -> int:
+    # Parse input_data and solve Part 2
+    ...
+    return result
 ```
 
 ## Testing
 
-Tests should use the examples from the puzzle:
+Tests use inline pytest fixtures to pass example input directly:
 
 ```python
+import pytest
+
 from day_XX.solution import solve_part1, solve_part2
 
 
-def test_part1_example():
-    # Create temp file with example input
-    # Assert solve_part1() returns expected result
+@pytest.fixture
+def example_input():
+    return """<example input from puzzle>"""
 
 
-def test_part2_example():
-    # Create temp file with example input
-    # Assert solve_part2() returns expected result
+def test_part1_example(example_input):
+    assert solve_part1(example_input) == <expected>
+
+
+def test_part2_example(example_input):
+    assert solve_part2(example_input) == <expected>
 ```
 
 ## CI Commands
@@ -97,6 +117,12 @@ Always run CI after making changes:
 ```bash
 make ci DAY=day_XX      # Single day
 make ci-all             # All days
+```
+
+To run a solution:
+
+```bash
+uv run day-XX           # e.g., uv run day-01
 ```
 
 ## Code Style

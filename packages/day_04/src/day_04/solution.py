@@ -1,9 +1,5 @@
-from pathlib import Path
-
-
-def solve_part1(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        lines = f.read().strip().split("\n")
+def solve_part1(input_data: str) -> int:
+    lines = input_data.strip().split("\n")
 
     grid = [list(line) for line in lines]
     rows = len(grid)
@@ -31,9 +27,8 @@ def solve_part1(input_path: Path | str) -> int:
     return accessible_count
 
 
-def solve_part2(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        lines = f.read().strip().split("\n")
+def solve_part2(input_data: str) -> int:
+    lines = input_data.strip().split("\n")
 
     grid = [list(line) for line in lines]
     rows = len(grid)
@@ -69,13 +64,3 @@ def solve_part2(input_path: Path | str) -> int:
         total_removed += len(accessible)
 
     return total_removed
-
-
-def main() -> None:
-    input_file = Path(__file__).parent / "input.txt"
-    print(f"Part 1: {solve_part1(input_file)}")
-    print(f"Part 2: {solve_part2(input_file)}")
-
-
-if __name__ == "__main__":
-    main()

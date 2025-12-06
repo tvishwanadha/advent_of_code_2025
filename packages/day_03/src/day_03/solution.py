@@ -1,6 +1,3 @@
-from pathlib import Path
-
-
 def max_joltage_bruteforce(bank: str) -> int:
     """Find the maximum two-digit joltage from a bank of batteries (O(n²) brute-force)."""
     best = 0
@@ -12,9 +9,8 @@ def max_joltage_bruteforce(bank: str) -> int:
     return best
 
 
-def solve_part1(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        lines = f.read().strip().split("\n")
+def solve_part1(input_data: str) -> int:
+    lines = input_data.strip().split("\n")
 
     return sum(max_joltage_k(bank, 2) for bank in lines)
 
@@ -46,18 +42,7 @@ def max_joltage_k(bank: str, k: int) -> int:
     return int("".join(str(d) for d in result))
 
 
-def solve_part2(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        lines = f.read().strip().split("\n")
+def solve_part2(input_data: str) -> int:
+    lines = input_data.strip().split("\n")
 
     return sum(max_joltage_k(bank, 12) for bank in lines)
-
-
-def main() -> None:
-    input_file = Path(__file__).parent / "input.txt"
-    print(f"Part 1: {solve_part1(input_file)}")
-    print(f"Part 2: {solve_part2(input_file)}")
-
-
-if __name__ == "__main__":
-    main()

@@ -19,61 +19,61 @@ The user wants to create a new day package for day $ARGUMENTS.
    - Keep the `name` as-is (uv init generates the correct hyphenated name like `day-05`)
    - Keep the `authors` block (already provided by uv init)
    - Change `requires-python = ">=3.14.0"` to `requires-python = ">=3.12"`
-   - Change the scripts entry from `day-$ARGUMENTS = "day_$ARGUMENTS:main"` to `day_$ARGUMENTS = "day_$ARGUMENTS.solution:main"` (underscore for script name, add `.solution`)
+   - Keep the default scripts entry `day-$ARGUMENTS = "day_$ARGUMENTS:main"` (no changes needed)
 
 5. **Sync to update uv.lock**: Run `uv sync` to ensure the version is recorded in the lock file.
 
-6. **Create solution.py**: Replace the generated `__init__.py` content and create `solution.py`:
+6. **Replace __init__.py and create solution.py**:
 
-   `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/__init__.py` should be empty.
-
-   `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py`:
+   `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/__init__.py`:
    ```python
    from pathlib import Path
 
-
-   def solve_part1(input_path: Path | str) -> int:
-       with open(input_path) as f:
-           lines = f.read().strip().split("\n")
-
-       # TODO: Implement solution
-       return 0
-
-
-   def solve_part2(input_path: Path | str) -> int:
-       # Part 2 not yet available
-       msg = "Part 2 not yet implemented"
-       raise NotImplementedError(msg)
+   from day_$ARGUMENTS.solution import solve_part1, solve_part2
 
 
    def main() -> None:
        input_file = Path(__file__).parent / "input.txt"
-       print(f"Part 1: {solve_part1(input_file)}")
-       # print(f"Part 2: {solve_part2(input_file)}")
+       input_data = input_file.read_text()
+       print(f"Part 1: {solve_part1(input_data)}")
+       # print(f"Part 2: {solve_part2(input_data)}")
 
 
    if __name__ == "__main__":
        main()
    ```
 
+   `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py`:
+   ```python
+   def solve_part1(input_data: str) -> int:
+       lines = input_data.strip().split("\n")
+
+       # TODO: Implement solution
+       return 0
+
+
+   def solve_part2(input_data: str) -> int:
+       # Part 2 not yet available
+       msg = "Part 2 not yet implemented"
+       raise NotImplementedError(msg)
+   ```
+
 7. **Create tests directory and test file**:
 
    `packages/day_$ARGUMENTS/tests/test_solution.py`:
    ```python
-   import tempfile
-   from pathlib import Path
+   import pytest
 
    from day_$ARGUMENTS.solution import solve_part1
 
 
-   def test_part1_example():
-       example_input = """TODO: Add example input"""
-       with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as f:
-           f.write(example_input)
-           f.flush()
-           result = solve_part1(Path(f.name))
+   @pytest.fixture
+   def example_input():
+       return """TODO: Add example input"""
 
-       assert result == 0  # TODO: Add expected result
+
+   def test_part1_example(example_input):
+       assert solve_part1(example_input) == 0  # TODO: Add expected result
    ```
 
 8. **Create README.md**: Create `packages/day_$ARGUMENTS/README.md` with the puzzle text:
@@ -119,7 +119,7 @@ The user wants to create a new day package for day $ARGUMENTS.
 
 12. **Run CI again** to verify the implementation passes all checks.
 
-13. **Run solution and present answer**: Run the solution with `uv run day_$ARGUMENTS` and present the Part 1 answer to the user.
+13. **Run solution and present answer**: Run the solution with `uv run day-$ARGUMENTS` and present the Part 1 answer to the user.
 
 14. **Wait for user validation**: Ask the user to confirm whether the answer was correct on the Advent of Code server. Do NOT update the Notes table until the user confirms the result.
 

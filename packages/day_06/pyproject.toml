@@ -9,7 +9,7 @@ requires-python = ">=3.12"
 dependencies = []
 
 [project.scripts]
-day_06 = "day_06.solution:main"
+day-06 = "day_06:main"
 
 [build-system]
 requires = ["uv_build>=0.9.15,<0.10.0"]

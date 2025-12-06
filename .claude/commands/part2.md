@@ -24,25 +24,26 @@ The user wants to add Part 2 for day $ARGUMENTS.
 
 3. **Implement solve_part2**: Update `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py` to implement `solve_part2()`.
 
-4. **Enable Part 2 output**: In `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py`, uncomment the Part 2 print line in `main()`:
+4. **Enable Part 2 output**: In `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/__init__.py`, uncomment the Part 2 print line in `main()`:
    ```python
-   print(f"Part 2: {solve_part2(input_file)}")
+   print(f"Part 2: {solve_part2(input_data)}")
    ```
 
 5. **Add Part 2 test**: Add `test_part2_example()` to `packages/day_$ARGUMENTS/tests/test_solution.py`:
 
    ```python
+   import pytest
+
    from day_$ARGUMENTS.solution import solve_part1, solve_part2
 
 
-   def test_part2_example():
-       example_input = """<example input>"""
-       with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as f:
-           f.write(example_input)
-           f.flush()
-           result = solve_part2(Path(f.name))
+   @pytest.fixture
+   def example_input():
+       return """<example input>"""
 
-       assert result == <expected>
+
+   def test_part2_example(example_input):
+       assert solve_part2(example_input) == <expected>
    ```
 
 6. **Run CI** to verify:
@@ -50,7 +51,7 @@ The user wants to add Part 2 for day $ARGUMENTS.
    make ci DAY=day_$ARGUMENTS
    ```
 
-7. **Run solution and present answer**: Run the solution with `uv run day_$ARGUMENTS` and present the Part 2 answer to the user.
+7. **Run solution and present answer**: Run the solution with `uv run day-$ARGUMENTS` and present the Part 2 answer to the user.
 
 8. **Wait for user validation**: Ask the user to confirm whether the answer was correct on the Advent of Code server. Do NOT update the Notes table until the user confirms the result.
 

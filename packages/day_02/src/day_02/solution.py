@@ -1,6 +1,3 @@
-from pathlib import Path
-
-
 def is_invalid_id(n: int) -> bool:
     """Check if n is made of some sequence of digits repeated twice."""
     s = str(n)
@@ -12,9 +9,8 @@ def is_invalid_id(n: int) -> bool:
     return s[:half] == s[half:]
 
 
-def solve_part1(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        line = f.read().strip()
+def solve_part1(input_data: str) -> int:
+    line = input_data.strip()
 
     total = 0
     ranges = line.split(",")
@@ -44,9 +40,8 @@ def is_invalid_id_v2(n: int) -> bool:
     return False
 
 
-def solve_part2(input_path: Path | str) -> int:
-    with open(input_path) as f:
-        line = f.read().strip()
+def solve_part2(input_data: str) -> int:
+    line = input_data.strip()
 
     total = 0
     ranges = line.split(",")
@@ -60,13 +55,3 @@ def solve_part2(input_path: Path | str) -> int:
             if is_invalid_id_v2(n):
                 total += n
     return total
-
-
-def main() -> None:
-    input_file = Path(__file__).parent / "input.txt"
-    print(f"Part 1: {solve_part1(input_file)}")
-    print(f"Part 2: {solve_part2(input_file)}")
-
-
-if __name__ == "__main__":
-    main()
