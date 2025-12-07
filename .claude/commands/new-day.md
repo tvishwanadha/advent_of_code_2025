@@ -29,7 +29,7 @@ The user wants to create a new day package for day $ARGUMENTS.
    ```python
    from pathlib import Path
 
-   from day_$ARGUMENTS.solution import solve_part1, solve_part2
+   from day_$ARGUMENTS.solution import solve_part1
 
 
    def main() -> None:

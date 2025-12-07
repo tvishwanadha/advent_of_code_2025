@@ -24,24 +24,14 @@ The user wants to add Part 2 for day $ARGUMENTS.
 
 3. **Implement solve_part2**: Update `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/solution.py` to implement `solve_part2()`.
 
-4. **Enable Part 2 output**: In `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/__init__.py`, uncomment the Part 2 print line in `main()`:
+4. **Enable Part 2 output**: In `packages/day_$ARGUMENTS/src/day_$ARGUMENTS/__init__.py`:
+   - Add `solve_part2` to the import: `from day_$ARGUMENTS.solution import solve_part1, solve_part2`
+   - Uncomment the Part 2 print line: `print(f"Part 2: {solve_part2(input_data)}")`
+
+5. **Add Part 2 test**: In `packages/day_$ARGUMENTS/tests/test_solution.py`:
+   - Add `solve_part2` to the import: `from day_$ARGUMENTS.solution import solve_part1, solve_part2`
+   - Add the test function:
    ```python
-   print(f"Part 2: {solve_part2(input_data)}")
-   ```
-
-5. **Add Part 2 test**: Add `test_part2_example()` to `packages/day_$ARGUMENTS/tests/test_solution.py`:
-
-   ```python
-   import pytest
-
-   from day_$ARGUMENTS.solution import solve_part1, solve_part2
-
-
-   @pytest.fixture
-   def example_input():
-       return """<example input>"""
-
-
    def test_part2_example(example_input):
        assert solve_part2(example_input) == <expected>
    ```

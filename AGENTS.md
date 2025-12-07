@@ -56,14 +56,14 @@ The `__init__.py` file handles file I/O and CLI entry:
 ```python
 from pathlib import Path
 
-from day_XX.solution import solve_part1, solve_part2
+from day_XX.solution import solve_part1
 
 
 def main() -> None:
     input_file = Path(__file__).parent / "input.txt"
     input_data = input_file.read_text()
     print(f"Part 1: {solve_part1(input_data)}")
-    print(f"Part 2: {solve_part2(input_data)}")
+    # print(f"Part 2: {solve_part2(input_data)}")
 
 
 if __name__ == "__main__":
@@ -94,7 +94,7 @@ Tests use inline pytest fixtures to pass example input directly:
 ```python
 import pytest
 
-from day_XX.solution import solve_part1, solve_part2
+from day_XX.solution import solve_part1
 
 
 @pytest.fixture
@@ -104,10 +104,6 @@ def example_input():
 
 def test_part1_example(example_input):
     assert solve_part1(example_input) == <expected>
-
-
-def test_part2_example(example_input):
-    assert solve_part2(example_input) == <expected>
 ```
 
 ## CI Commands
