@@ -1,0 +1,16 @@
+[project]
+name = "day-12"
+version = "2025.12"
+description = "Advent of Code 2025 - Day 12: Christmas Tree Farm"
+authors = [
+    { name = "Teja Vishwanadha", email = "496868+tvishwanadha@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+day-12 = "day_12:main"
+
+[build-system]
+requires = ["uv_build>=0.9.15,<0.10.0"]
+build-backend = "uv_build"

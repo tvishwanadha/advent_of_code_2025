@@ -14,6 +14,8 @@ dependencies = [
     "day_08",
     "day_09",
     "day_10",
+    "day_11",
+    "day_12",
 ]
 
 [tool.uv.workspace]
@@ -30,6 +32,8 @@ day_07 = { workspace = true }
 day_08 = { workspace = true }
 day_09 = { workspace = true }
 day_10 = { workspace = true }
+day_11 = { workspace = true }
+day_12 = { workspace = true }
 
 [dependency-groups]
 dev = [
